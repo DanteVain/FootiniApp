@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using FootiniApp.API.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FootiniApp.API.Controllers
 {
     [Authorize]
+    [EnableCors("AllowAllHeaders")]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase

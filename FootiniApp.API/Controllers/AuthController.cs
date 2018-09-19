@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FootiniApp.API.Data;
 using FootiniApp.API.Dtos;
 using FootiniApp.API.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -13,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace FootiniApp.API.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAllHeaders")]
     [ApiController]
     public class AuthController : ControllerBase
     {
