@@ -48,7 +48,8 @@ namespace FootiniApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
-
+            //throw new Exception("dave says no way man");
+            
             var userFromRepo = await _repo.Login(userForLoginDto.Email.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
