@@ -31,13 +31,15 @@ namespace FootiniApp.API.Controllers
         {
 
             // validate request
-            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
-            if (await _repo.UserExists(userForRegisterDto.Username))
+            userForRegisterDto.Email = userForRegisterDto.Email.ToLower();
+            if (await _repo.UserExists(userForRegisterDto.Email))
                 return BadRequest("username already exists");
 
             var userToCreate = new User
             {
-                Username = userForRegisterDto.Username
+                Forename = userForRegisterDto.Forename,
+                Surname = userForRegisterDto.Surname,
+                Email = userForRegisterDto.Email
             };
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
             return StatusCode(201);
@@ -47,14 +49,13 @@ namespace FootiniApp.API.Controllers
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
 
-            var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
+            var userFromRepo = await _repo.Login(userForLoginDto.Email.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
                 return Unauthorized();
 
             var claims = new[]{
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
