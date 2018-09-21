@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-  <a class="navbar-brand" href="#"><h3>Footini Boards</h3></a>
+  <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="router-link-active" ><h3>Footini Boards</h3></a>
   
     <!-- <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -19,11 +19,11 @@
          {{authservice.decodedToken?.email}}
       </a>
       <div class="dropdown-menu mt-3" *dropdownMenu >
-        <a class="dropdown-item" href="#"><i class="fa fa-user mr-2"></i>Edit Profile</a>
+        <a class="dropdown-item" [routerLink]="['/edit']" routerLinkActive="router-link-active" ><i class="fa fa-user mr-2"></i>Edit Profile</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#"><i class="fa fa-user mr-2"></i>View Boards</a>
+        <a class="dropdown-item" [routerLink]="['/viewboards']" routerLinkActive="router-link-active" ><i class="fa fa-user mr-2"></i>View Boards</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#"><i class="fa fa-user mr-2"></i>Configure Boards</a>
+        <a class="dropdown-item" [routerLink]="['/configure']" routerLinkActive="router-link-active" ><i class="fa fa-user mr-2"></i>Configure Boards</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out mr-2"></i>LogOut</a>
       </div>

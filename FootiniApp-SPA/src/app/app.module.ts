@@ -11,6 +11,11 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { ViewboardsComponent } from './viewboards/viewboards.component';
+import { ConfigureComponent } from './configure/configure.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 
@@ -19,18 +24,22 @@ import { BsDropdownModule } from 'ngx-bootstrap';
       AppComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      ViewboardsComponent,
+      ConfigureComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
       BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,
       ErrorInterceptorProvider,
-      AlertifyService
+      AlertifyService,
+      AuthGuard
    ],
    bootstrap: [
       AppComponent
