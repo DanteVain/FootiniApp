@@ -1,8 +1,8 @@
-import { Routes } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { ConfigureComponent } from "./configure/configure.component";
-import { ViewboardsComponent } from "./viewboards/viewboards.component";
-import { AuthGuard } from "./_guards/auth.guard";
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { ConfigureComponent } from './configure/configure.component';
+import { ViewboardsComponent } from './viewboards/viewboards.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 export const appRoutes: Routes = [
         {path: '', component: HomeComponent},
