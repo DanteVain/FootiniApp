@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FootiniApp.API.Models;
 
@@ -12,5 +13,6 @@ namespace FootiniApp.API.Data
         Task<bool> SaveAll();
          
         Task<User> GetUser(int id);
+        Task<IEnumerable<User>> GetUsers();
     }
 }

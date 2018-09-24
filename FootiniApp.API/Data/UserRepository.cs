@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FootiniApp.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,11 @@ namespace FootiniApp.API.Data
             return user;
         }
 
+        public async Task<IEnumerable<User>> GetUsers()
+        {
+            var users = await _context.Users.ToListAsync();
+            return users;
+        }
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;

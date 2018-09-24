@@ -50,6 +50,9 @@ namespace FootiniApp.API
             services.AddDbContext<DataContext>(x => x.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<IBoardsRepository, BoardsRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(Options => {
                 Options.TokenValidationParameters = new TokenValidationParameters
