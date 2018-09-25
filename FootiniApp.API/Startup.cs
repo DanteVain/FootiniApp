@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using FootiniApp.API.Data;
 using FootiniApp.API.helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -53,6 +54,7 @@ namespace FootiniApp.API
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IBoardsRepository, BoardsRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(Options => {
                 Options.TokenValidationParameters = new TokenValidationParameters
