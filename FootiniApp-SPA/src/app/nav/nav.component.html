@@ -14,16 +14,19 @@
       </li>
     </ul> -->
 
+  
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
-      <a class="dropdown-toggle text-light" dropdownToggle>
-         {{authservice.decodedToken?.email}}
+      <a class="btn btn-warning dropdown-toggle text-light dropdownbutton" style="color:black !important" dropdownToggle>
+         Menu
       </a>
       <div class="dropdown-menu mt-3" *dropdownMenu >
-        <a class="dropdown-item" [routerLink]="['/edit']" routerLinkActive="router-link-active" ><i class="fa fa-user mr-2"></i>Edit Profile</a>
+        <a class="dropdown-item" [routerLink]="['/admin']" routerLinkActive="router-link-active" ><i class="fa fa-user-secret mr-2"></i>Administrator</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" [routerLink]="['/viewboards']" routerLinkActive="router-link-active" ><i class="fa fa-user mr-2"></i>View Boards</a>
+        <a class="dropdown-item" [routerLink]="['/edit']" routerLinkActive="router-link-active" ><i class="fa fa-user-circle mr-2"></i>Edit Profile</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" [routerLink]="['/configure']" routerLinkActive="router-link-active" ><i class="fa fa-user mr-2"></i>Configure Boards</a>
+        <a class="dropdown-item" [routerLink]="['/viewboards']" routerLinkActive="router-link-active" ><i class="fa fa-table mr-2"></i>View Boards</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" [routerLink]="['/configure']" routerLinkActive="router-link-active" ><i class="fa fa-wrench mr-2"></i>Configure Boards</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out mr-2"></i>LogOut</a>
       </div>

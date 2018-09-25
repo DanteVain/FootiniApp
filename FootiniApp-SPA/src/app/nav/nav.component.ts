@@ -37,4 +37,8 @@ export class NavComponent implements OnInit {
     this.alertify.success('Succesfully logged Out');
     this.router.navigate(['/home'])
   }
+
+  isAdmin() {
+    return true;
+  }
 }

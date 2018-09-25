@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
 
 
   canActivate(): boolean {
-    if (this.authService.loggedIn()){
+    if (this.authService.loggedIn()) {
       return true;
     }
     this.alertify.error('Please log in to access this area');
