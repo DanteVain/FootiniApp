@@ -7,6 +7,9 @@ import { AdministratorComponent } from './Administrator/Administrator.component'
 import { MemberdetailsComponent } from './Administrator/memberdetails/memberdetails.component';
 import { MemberDetailResolver } from './_resolvers/member-detail-resolver';
 import { MemberListResolver } from './_resolvers/member-list-resolver.';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditResolver } from './_resolvers/edit-resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export const appRoutes: Routes = [
         {path: '', component: HomeComponent},
@@ -16,10 +19,12 @@ export const appRoutes: Routes = [
                 runGuardsAndResolvers: 'always',
                 canActivate: [AuthGuard],
                 children: [
-                        {path: 'admin', component: AdministratorComponent, resolve {users: MemberListResolver}},
+                        {path: 'admin', component: AdministratorComponent, resolve: {users: MemberListResolver}},
                         {path: 'admin/:id', component: MemberdetailsComponent, resolve: {user: MemberDetailResolver}},
                         {path: 'configure', component: ConfigureComponent},
                         {path: 'viewboards', component: ViewboardsComponent},
+                        {path: 'edit', component: EditProfileComponent, resolve: {user: EditResolver}, 
+                                canDeactivate: [PreventUnsavedChanges]},
                 ]
         },
 

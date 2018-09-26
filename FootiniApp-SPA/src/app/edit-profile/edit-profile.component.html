@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <div *ngIf="editForm.dirty" class="alert alert-info">
+      <strong>Information:</strong> You have made changes, any unsaved changes will be lost!
+    </div>
+  </div>
+<div class="container mt-4">
+  <form #editForm="ngForm" (ngSubmit)="updateUser()">
+      <h3 class="text-center mt-4">Update Your Details</h3>
+      <h6 class="mt-4">Please use the form below to update your details. To reset your password please email reset@footini.com</h6>
+
+      <div class="form-group">
+          <label for="forename">Forename</label>
+          <textarea name="forename" rows="1" class="form-control" [(ngModel)]="user.forename"></textarea>
+        </div>
+
+      <div class="form-group">
+          <label for="Surname">Surname</label>
+          <textarea name="surname" rows="1" class="form-control" [(ngModel)]="user.surname"></textarea>
+        </div>
+      
+      <div class="form-group">
+          <label for="email">Email address</label>
+          <textarea name="email" rows="1" class="form-control" [(ngModel)]="user.email"></textarea>
+      </div>
+      <button [disabled]="!editForm.dirty" class="btn btn-success mt-5">Save Changes</button>
+    </form>
+  </div>

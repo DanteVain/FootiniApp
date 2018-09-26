@@ -9,6 +9,7 @@ namespace FootiniApp.API.helpers
         public AutoMapperProfiles()
         {
             CreateMap<User, UserForList>();
+            CreateMap<userForUpdateDto, User>();
         }
     }
 }
