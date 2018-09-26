@@ -22,6 +22,8 @@ import { MemberListComponent } from './Administrator/member-list/member-list.com
 import { MemberCardComponent } from './Administrator/member-list/member-card/member-card.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MemberdetailsComponent } from './Administrator/memberdetails/memberdetails.component';
+import { MemberDetailResolver } from './_resolvers/member-detail-resolver';
+import { MemberListResolver } from './_resolvers/member-list-resolver.';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -60,7 +62,9 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-      UserService
+      UserService,
+      MemberDetailResolver,
+      MemberListResolver
    ],
    bootstrap: [
       AppComponent
