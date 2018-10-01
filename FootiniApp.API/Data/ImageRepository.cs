@@ -32,7 +32,7 @@ namespace FootiniApp.API.Data
 
         public async Task<IEnumerable<Image>> GetImages(int id)
         {
-            var images = await _context.Images.Where(i => i.UserId == id).ToListAsync();
+            var images = await _context.Images.Where(i => i.User.Id == id).ToListAsync();
             return images;
         }
 

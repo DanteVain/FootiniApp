@@ -3,14 +3,16 @@ using System;
 using FootiniApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootiniApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20181001130248_Addedimageupdates")]
+    partial class Addedimageupdates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace FootiniApp.API.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -113,7 +115,8 @@ namespace FootiniApp.API.Migrations
 
                     b.HasOne("FootiniApp.API.Models.User", "User")
                         .WithMany("Images")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

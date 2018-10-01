@@ -35,6 +35,7 @@ export class EditProfileComponent implements OnInit {
       // this.router.navigate(['/viewboards']);
        this.editForm.reset(this.user);
        console.log(this.user);
+       this.router.navigate(['/viewboards']);
     }, error => {
       this.alertify.error(error);
     });

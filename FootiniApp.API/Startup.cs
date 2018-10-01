@@ -54,6 +54,7 @@ namespace FootiniApp.API
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IBoardsRepository, BoardsRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(Options => {

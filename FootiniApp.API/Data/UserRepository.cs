@@ -23,6 +23,12 @@ namespace FootiniApp.API.Data
              _context.Add(entity);
         }
 
+        public async Task<Image> GetImage(int id)
+        {
+            var image = await _context.Images.FirstOrDefaultAsync(i => i.Id == id);
+            return image;
+        }
+
         public async Task<User> GetUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
