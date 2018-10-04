@@ -10,6 +10,8 @@ import { MemberListResolver } from './_resolvers/member-list-resolver.';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditResolver } from './_resolvers/edit-resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { ImagesComponent } from './images/images.component';
+import { ImageListResolver } from './_resolvers/image-list-resolver';
 
 export const appRoutes: Routes = [
         {path: '', component: HomeComponent},
@@ -23,8 +25,9 @@ export const appRoutes: Routes = [
                         {path: 'admin/:id', component: MemberdetailsComponent, resolve: {user: MemberDetailResolver}},
                         {path: 'configure', component: ConfigureComponent},
                         {path: 'viewboards', component: ViewboardsComponent},
-                        {path: 'edit', component: EditProfileComponent, resolve: {user: EditResolver}, 
+                        {path: 'edit', component: EditProfileComponent, resolve: {user: EditResolver},
                                 canDeactivate: [PreventUnsavedChanges]},
+                        {path: 'images', component: ImagesComponent, resolve: {images: ImageListResolver} },
                 ]
         },
 

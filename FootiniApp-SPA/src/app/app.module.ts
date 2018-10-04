@@ -27,6 +27,10 @@ import { MemberListResolver } from './_resolvers/member-list-resolver.';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditResolver } from './_resolvers/edit-resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { ImagesComponent } from './images/images.component';
+import { ImageService } from './_services/Image.service';
+import { ImageListResolver } from './_resolvers/image-list-resolver';
+import { ImageCardComponent } from './images/Image-Card/Image-Card.component';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -44,7 +48,9 @@ export function tokenGetter() {
       MemberListComponent,
       MemberCardComponent,
       MemberdetailsComponent,
-      EditProfileComponent
+      EditProfileComponent,
+      ImagesComponent,
+      ImageCardComponent
    ],
    imports: [
       BrowserModule,
@@ -68,9 +74,11 @@ export function tokenGetter() {
       AuthGuard,
       PreventUnsavedChanges,
       UserService,
+      ImageService,
       MemberDetailResolver,
       MemberListResolver,
-      EditResolver
+      EditResolver,
+      ImageListResolver
    ],
    bootstrap: [
       AppComponent
