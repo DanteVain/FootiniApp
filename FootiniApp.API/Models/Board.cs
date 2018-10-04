@@ -7,7 +7,7 @@ namespace FootiniApp.API.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Image> Images { get; set; }
+        public string ImagesArray { get; set; }
         public DateTime Created { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }

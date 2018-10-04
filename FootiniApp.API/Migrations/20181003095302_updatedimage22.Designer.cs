@@ -3,14 +3,16 @@ using System;
 using FootiniApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootiniApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20181003095302_updatedimage22")]
+    partial class updatedimage22
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,8 +27,6 @@ namespace FootiniApp.API.Migrations
                     b.Property<int>("BoardType");
 
                     b.Property<DateTime>("Created");
-
-                    b.Property<string>("ImagesArray");
 
                     b.Property<string>("Name");
 
@@ -46,15 +46,19 @@ namespace FootiniApp.API.Migrations
 
                     b.Property<string>("AssociatedText");
 
+                    b.Property<int?>("BoardId");
+
                     b.Property<DateTime>("Created");
 
                     b.Property<string>("PublicId");
 
                     b.Property<string>("Url");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BoardId");
 
                     b.HasIndex("UserId");
 
@@ -105,9 +109,14 @@ namespace FootiniApp.API.Migrations
 
             modelBuilder.Entity("FootiniApp.API.Models.Image", b =>
                 {
+                    b.HasOne("FootiniApp.API.Models.Board")
+                        .WithMany("Images")
+                        .HasForeignKey("BoardId");
+
                     b.HasOne("FootiniApp.API.Models.User", "User")
                         .WithMany("Images")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

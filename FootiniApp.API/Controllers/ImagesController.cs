@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -38,14 +39,23 @@ namespace FootiniApp.API.Controllers
             );
             _cloudinary = new Cloudinary(acc);
         }
-        [HttpGet("{id}", Name = "GetPhoto")]
+        [HttpGet("{id}", Name = "GetImage")]
 
-        public async Task<IActionResult> GetPhoto(int id){
+        public async Task<IActionResult> GetImage(int id){
 
             var imageFromRepo = await _userRepository.GetImage(id);
             var image = _mapper.Map<ImageForReturnDto>(imageFromRepo);
 
             return Ok(image);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetImages(int userid){
+
+            var imagesFromRepo = await _userRepository.GetImages(userid);
+            var images = _mapper.Map<List<ImageForReturnDto>>(imagesFromRepo);
+
+            return Ok(images);
         }
 
         [HttpPost]
@@ -74,12 +84,14 @@ namespace FootiniApp.API.Controllers
             imageForCreationDto.Url = uploadResult.Uri.ToString();
             imageForCreationDto.PublicId = uploadResult.PublicId;
             imageForCreationDto.AssociatedText = "hello";
+        
             
 
             var image = _mapper.Map<Image>(imageForCreationDto);
-            userFromRepo.Images.Add(image);
+            image.User = userFromRepo;
+            _imageRepository.Add(image);
 
-            if(await _userRepository.SaveAll()){
+            if(await _imageRepository.SaveAll()){
                 var imageToReturn = _mapper.Map<ImageForReturnDto>(image);
                 return CreatedAtRoute("GetImage", new {id = image.Id}, imageToReturn );
             }

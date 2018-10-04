@@ -1,4 +1,5 @@
 using System;
+using FootiniApp.API.Models;
 using Microsoft.AspNetCore.Http;
 
 namespace FootiniApp.API.Dtos

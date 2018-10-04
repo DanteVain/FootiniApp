@@ -12,6 +12,7 @@ namespace FootiniApp.API.helpers
             CreateMap<userForUpdateDto, User>();
             CreateMap<Image, ImageForReturnDto>();
             CreateMap<ImageForCreationDto, Image>();
+            CreateMap<ImageForReturnDto, Image>();
         }
     }
 }

@@ -16,5 +16,7 @@ namespace FootiniApp.API.Data
         Task<IEnumerable<User>> GetUsers();
 
         Task<Image> GetImage(int id);
+
+        Task<List<Image>> GetImages(int userid);
     }
 }

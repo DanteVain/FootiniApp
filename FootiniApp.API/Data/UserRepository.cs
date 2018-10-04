@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using FootiniApp.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,12 @@ namespace FootiniApp.API.Data
             return image;
         }
 
+        public async Task<List<Image>> GetImages(int userid)
+        {
+            List<Image> images = await _context.Images.Where(i => i.User.Id == userid).ToListAsync();
+            return images;
+        }
+
         public async Task<User> GetUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
@@ -44,5 +51,6 @@ namespace FootiniApp.API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
     }
 }
